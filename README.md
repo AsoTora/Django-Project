@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# Django-Project
 Django project -- simple shatboard with common things done like:
 
     - Using Django-Models with different connections between Models, business-logic and etc.
@@ -6,6 +6,3 @@ Django project -- simple shatboard with common things done like:
     - Implementig Django Forms, Form templates, reusable Templates
     - Probiding input-data validation 
     - Using Bootstrap for building CSS and simple Javascript UI elements
-=======
-# Django-Project
->>>>>>> c9007928b60415f562bdceca4021c2ae7ce8f312
