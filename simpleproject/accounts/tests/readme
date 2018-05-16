@@ -1,0 +1,8 @@
+TO RUN TESTS PUT: python manage.py test accounts.tests
+
+
+я удалил __init__.py file из директории проекта, чтобы команда 'python manage.py test' шла по папкам tests приложений.
+По совету: https://stackoverflow.com/questions/21069880/running-django-tutorial-tests-fail-no-module-named-polls-tests?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+
+
+DOCS: https://docs.djangoproject.com/en/2.0/topics/testing/overview/#running-tests

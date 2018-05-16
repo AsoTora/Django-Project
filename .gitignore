@@ -1,0 +1,16 @@
+# pycharmstuff
+_pycache__/
+*.py[cod]
+.env
+venv/
+
+# virtualenv 
+bin/
+lib/
+node_modules/
+pip-selfcheck.json 
+.idea/
+
+# SQLite database files
+*.sqlite3
+
