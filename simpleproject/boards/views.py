@@ -12,7 +12,7 @@ from .forms import *
 
 # Generic Class-Based View Modules
 from django.shortcuts import redirect
-from django.views.generic import CreateView, UpdateView, ListView
+from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.utils import timezone
 
 # Paginator
@@ -83,6 +83,7 @@ def new_topic(request, board_id):
                 topic=topic,
                 created_by=request.user
             )
+            print(Post.message, Post.topic)
             return redirect('topic_posts', board_id=board_id, topic_id=topic.pk)
     else:
         form = NewTopicForm()
@@ -197,3 +198,31 @@ class PostUpdateView(UpdateView):
         post.updated_at = timezone.now()
         post.save()
         return redirect('topic_posts', board_id=post.topic.board.pk, topic_id=post.topic.pk)
+
+#
+# @method_decorator(login_required, name='dispatch')
+# class PostDeleteView(DeleteView):
+#     model = Post
+#     pk_url_kwarg = 'post_id'
+#     success_url = reverse_lazy('topic_posts')
+#
+#
+#
+
+
+@login_required()
+def delete_post(request, board_id, topic_id, post_id):
+    new_to_delete = get_object_or_404(Post, pk=post_id)
+
+    if request.method == 'POST':
+        form = DeletePostForm(request.POST, instance=new_to_delete)
+
+        if form.is_valid():  # checks CSRF
+            new_to_delete.delete()
+            return redirect('topic_posts', board_id=board_id, topic_id=topic_id)
+    else:
+        print('hi')
+        pass
+    #     form = DeletePostForm(instance=new_to_delete)
+    # template_vars = {'form': form}
+    # return render(request, 'news/deleteNew.html', template_vars)

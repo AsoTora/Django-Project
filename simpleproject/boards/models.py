@@ -6,6 +6,7 @@ from markdown import markdown
 
 import math
 
+
 class Board(models.Model):  # Ассоциируется с темой. Связь 1 Board -- 0/many Topics
     name = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=100)

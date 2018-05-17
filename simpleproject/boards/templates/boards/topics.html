@@ -32,7 +32,7 @@
       {% for topic in topics %}
         {% url 'topic_posts' board.pk topic.pk as topic_url %}
         <tr>   <!--Topic pages count and paginator-->
-          <td>
+          <td>   <!--Topic column-->
             <p class="mb-0">
               <a href="{{ topic_url }}">{{ topic.subject }}</a>
             </p>
@@ -43,11 +43,9 @@
               {% endfor %}
 
               {% if topic.has_many_pages %}
-              ... <a href="{{ topic_url }}?page={{ topic.get_page_count }}">Last Page</a>
+                <a href="{{ topic_url }}?page={{ topic.get_page_count }}">Last Page</a>
               {% endif %}
             </small>
-          </td>
-          <td><a href="{% url 'topic_posts' board.pk topic.pk %}">{{ topic.subject }}</a></td>  <!--Topic column-->
           <td class="align-middle">{{ topic.starter.username }}</td>  <!--Starter column -->
           <td class="align-middle">{{ topic.replies }}</td>  <!--Replies column -->
           <td class="align-middle">{{ topic.views }}</td>  <!--Views column -->

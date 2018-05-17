@@ -27,3 +27,12 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['message', ]
 
+
+class DeletePostForm(forms.ModelForm):
+    error_messages = 'Couldn\'t delete this'
+
+    class Meta:
+        model = Post
+        fields = []
+
+
