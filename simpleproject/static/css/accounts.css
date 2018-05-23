@@ -2,9 +2,11 @@ body {
   background-image: url(../img/ticks.png);
 }
 
+/*
 .logo {
   font-family: 'Peralta', cursive;
 }
+*/
 
 .logo a {
   color: rgba(0,0,0,.9);

@@ -15,8 +15,8 @@ from django.shortcuts import redirect
 from django.views.generic import CreateView, UpdateView, ListView, DeleteView
 from django.utils import timezone
 
-# Paginator
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# # Paginator
+# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Generic Class-Based View
@@ -74,16 +74,17 @@ def new_topic(request, board_id):
     if request.method == 'POST':
         form = NewTopicForm(request.POST)
         if form.is_valid():
-            topic = form.save(commit=False)
+            topic = form.save(commit=False)  # return an object that hasn’t yet been saved to the database.
             topic.board = board
             topic.starter = request.user
             topic.save()
+
             Post.objects.create(
                 message=form.cleaned_data.get('message'),
                 topic=topic,
                 created_by=request.user
             )
-            print(Post.message, Post.topic)
+
             return redirect('topic_posts', board_id=board_id, topic_id=topic.pk)
     else:
         form = NewTopicForm()

@@ -1,9 +1,9 @@
-{% load form_tags widget_tweaks %}  <!-- загрузка тэгов, библиотеки бутстрапа -->
+{% load form_tags widget_tweaks %}  <!-- загрузка собственных тэгов, библиотеки бутстрапа -->
 
-{% if form.non_field_errors %}
+{% if form.non_field_errors %}  <!-- любые ошибки не полей (поля в forms.py)-->
   <div class="alert alert-danger" role="alert">
     {% for error in form.non_field_errors %}
-      <p{% if forloop.last %} class="mb-0"{% endif %}> {{ error }}</p>
+      <p{% if forloop.last %} class="mb-0"{% endif %} {{ error }}</p>
     {% endfor %}
   </div>
 {% endif %}
@@ -13,7 +13,7 @@
     {{ field.label_tag }}
     {% render_field field class=field|input_class %}
 
-    {% for error in field.errors %}
+    {% for error in field.errors %}  <!-- показать ошибки заполнения полей (forms.py) -->
       <div class="invalid-feedback">
         {{ error }}
       </div>
